@@ -17,23 +17,25 @@ class OPUISystemCmd extends PluginCommand{
 
     public function __construct($name, Main $plugin){
         parent::__construct($name, $plugin);
-        $this->setDescription("Open OPSystem UI");
-        $this->setAliases(["OPUI", "opui"]);
-        $this->setPermission("pocketmine.command.opui");
+        $this->setDescription("Opens SkyRealmPE Core UI !");
+        $this->setAliases(["core", "coreui"]);
+        $this->setPermission("skycore.command.core");
     }
 
-    public function OPUI($sender){
+    public function core($sender){
         if($sender instanceof Player){
-          if($sender->hasPermission("pocketmine.command.opui")){
+          if($sender->hasPermission("skycore.command.core")){
             $form = $this->getPlugin()->createCustomForm(function(Player $sender, array $data){
               $result = $data[0];
               if($result != null){
-                $opcmd = "op ".$data[0];
-                $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender->getPlayer(), $opcmd);
+                $corecmd = "core".$data[0];
+                $this->getPlugin()->getServer()->getCommandMap()->dispatch($sender->getPlayer(), $corecmd);
               }
             });
-            $form->setTitle("§l§aOP");
-            $form->addInput("§bUser");
+            $form->setTitle("§bSkyRealm Main Menu");
+            $form->addbutton("Vote");
+		
+		
             $form->sendToPlayer($sender);
           }
         }else{
@@ -42,7 +44,7 @@ class OPUISystemCmd extends PluginCommand{
     return true;
   }
 
-    public function DEOPUI($sender){
+    public function addbutton($sender){
         if($sender instanceof Player){
           if($sender->hasPermission("pocketmine.command.opui")){
             $form = $this->getPlugin()->createCustomForm(function(Player $sender, array $data){
