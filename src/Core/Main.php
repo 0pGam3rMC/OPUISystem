@@ -1,6 +1,6 @@
 <?php
 
-namespace OPUISystem;
+namespace Core;
 
 use pocketmine\Player;
 use pocketmine\Server;
@@ -77,9 +77,9 @@ class Main extends PluginBase implements Listener{
 	}
 
 	public function onEnable(){
-	 	$this->getServer()->getCommandMap()->register("opui", new OPUISystemCmd("opui", $this));
+	 	$this->getServer()->getCommandMap()->register("core", new OPUISystemCmd("core", $this));
 	 	$this->getServer()->getPluginManager()->registerEvents($this, $this);
-		$this->getLogger()->info(C::GREEN . "Enabled.");
+		$this->getLogger()->info(C::GREEN . "SkyCore has been enabled!");
 	}
 
 	public function onDisable(){
